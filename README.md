@@ -16,4 +16,8 @@ This repository covers three types of design patterns: creational, structural, a
 - Bridge
 
 **III. Structural**
-
+- Iterator
+- Observer
+- Visitor
+- Strategy
+- Chain of Responsibility
