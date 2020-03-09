@@ -27,8 +27,6 @@ class Relationships(RelationshipBrowser):  # low-level
                 yield r[2].name
 
 class Research:
-    # dependency on a low-level module directly is bad 
-    # because of strongly dependent on e.g. storage type
     # def __init__(self, relationships):
     #     # high-level: find all of john's children
     #     relations = relationships.relations
