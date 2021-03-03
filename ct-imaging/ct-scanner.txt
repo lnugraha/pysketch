@@ -1,1 +1,6 @@
+TODO:
 
+1. Include DICOM image slices
+2. Move Python source file that is used to render CT slices in both 2D and 3D
+3. Build Python source file that can be used to window HU number
+4. Radon Transform and Its Inverse
