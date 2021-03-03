@@ -1,1 +1,6 @@
+TODO:
 
+1. Perform a dgemm operation of two dense matrices using only numpy for assistance, where its complexity is O(n^3)
+2. Calculate its time and GFLOPS
+3. Sketch its matrix elements vs GFLOPS plot
+4. Include testing with Python dgemm built-in library
