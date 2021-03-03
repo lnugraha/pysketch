@@ -1,1 +1,4 @@
+TODO:
 
+1. Perform a neural net (feed forward) calculation
+2. Measure its accuracy and training time
