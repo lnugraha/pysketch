@@ -50,7 +50,7 @@ jobs:
         cd ./tensor-calculation
         python using_unittest.py
 
-    - name: Testing with PyTest
-      run: |
-        cd ./tensor-calculation
-        python -m pytest using_pytest.py
+    # - name: Testing with PyTest
+    #  run: |
+    #    cd ./tensor-calculation
+    #    python -m pytest using_pytest.py
