@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Python Package Automated Test Environment
 
 # Controls when the action will run. 
@@ -11,7 +9,8 @@ on:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Setup:
+  # This workflow contains a single job called "build"
+  build:
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
     
@@ -20,6 +19,7 @@ jobs:
         python-version: [3.7, 3.8, 3.9]
         os: [ubuntu-latest, macos-latest]
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -34,51 +34,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest numpy
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-  
-  Testing_UnitTest:
-    runs-on: ${{ matrix.os }}
-    strategy: 
-      matrix:
-        python-version: [3.7, 3.8, 3.9]
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-latest]
-    needs: Setup
-    steps: 
-      - uses: actions/checkout@v2
-      - name: Install all dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8 pytest numpy
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Testing with Unit Tests
-        run: |
-          cd ./tensor-calculation
-          python using_unittest.py
-
-  Testing_Pytest:
-    runs-on: ${{ matrix.os }}
-    strategy: 
-      matrix:
-        python-version: [3.7, 3.8, 3.9]
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-latest]
-    needs: Setup
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install all dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8 pytest numpy
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - name: Testing with PyTest
-        run: |
-          cd ./tensor-calculation
-          python -m pytest using_pytest.py  
-
-
+    - name: Testing with UnitTest
+      run: |
+        cd ./tensor-calculation
+        python using_unittest.py
+    - name: Testing with PyTest
+      run: |
+        cd ./tensor-calculation
+        python -m pytest using_pytest.py
