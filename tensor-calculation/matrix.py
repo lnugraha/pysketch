@@ -1,15 +1,17 @@
-import math
+#!/usr/bin/python3
+import math, sys
 import numpy as np
-import time
 from timeit import default_timer as timer
 from random import seed
 from random import randint
 
-# Hint: to multiply two matrices, use a built-in function
-# C = A.dot(B)
-
 def generateSquareMatrix(size):
     # include an assertion, such that size cannot be less than 1
+    if size < 1:
+        raise ValueError("Matrix rows or columns cannot be less than one")
+    elif type(size) is not int:
+        raise TypeError("Matrix rows or columns does not have proper number")
+
     M = np.ones( (size, size) )
     for i in range(size):
         for j in range(size):
@@ -39,10 +41,14 @@ def getMFLOPS(A, B, size):
     return estimatedGFLOPS
 
 if __name__ == "__main__":
-    matSize = 500
+    if len( sys.argv ) == 2:
+        matSize = int( sys.argv[1] )
+    else:
+        matSize = 5
+
+    print( "Matrix Size: {}".format(matSize) )
     M = generateSquareMatrix(matSize)
     N = generateSquareMatrix(matSize)
     O = dgemm(M, N, matSize)
-
-    check = getMFLOPS(M, N, matSize)
-    print(check)
+    # check = getMFLOPS(M, N, matSize)
+    # print(check)
