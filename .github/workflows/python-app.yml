@@ -48,11 +48,9 @@ jobs:
     - name: Testing with UnitTest
       run: |
         cd ./tensor-calculation
-        pwd
         python using_unittest.py
 
     - name: Testing with PyTest
       run: |
         cd ./tensor-calculation
-        pwd
-        python -m pytest using_test.py
+        python -m pytest using_pytest.py
