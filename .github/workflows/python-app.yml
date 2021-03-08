@@ -12,7 +12,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  Setup:
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
     
@@ -45,12 +45,42 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Testing with UnitTest
-      run: |
-        cd ./tensor-calculation
-        python using_unittest.py
+        #    - name: Testing with UnitTest
+        #      run: |
+        #        cd ./tensor-calculation
+        #        python using_unittest.py
+        #
+        #    - name: Testing with PyTest
+        #      run: |
+        #        cd ./tensor-calculation
+        #        python -m pytest using_pytest.py
+  
+  Testing_UnitTest:
+    runs-on: ${{ matrix.os }}
+    strategy: 
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+        os: [ubuntu-latest, macos-latest]
+    needs: Setup
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Testing with Unit Tests
+        run: |
+          cd ./tensor-calculation
+          python using_unittest.py
 
-    - name: Testing with PyTest
-      run: |
-        cd ./tensor-calculation
-        python -m pytest using_pytest.py
+  Testing_Pytest:
+    runs-on: ${{ matrix.os }}
+    strategy: 
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+        os: [ubuntu-latest, macos-latest]
+    needs: Setup
+    steps:
+      - uses: actions/checkout@v2
+      - name: Testing with PyTest
+        run: |
+          cd ./tensor-calculation
+          python -m pytest using_pytest.py  
+  
+
