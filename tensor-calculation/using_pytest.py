@@ -3,21 +3,18 @@ import pytest, math, sys
 import numpy as np
 import matrix
 
-def checkRunning():
-    x = 2; y = 3
-    assert x == y, "X and Y is not equal"
-
-def checkElements():
+def testValueElements():
     matSize = 0
-    with pytest.raises(ValueError, match=r".* cannot be less than one .*"):
+    with pytest.raises(ValueError, match=r".* cannot be less than one"):
         X = matrix.generateSquareMatrix(matSize)
 
-def checkElementType():
+
+def testElementType():
     matSize = True
-    with pytest.raises(TypeError, match=r".* does not have proper number .*"):
+    with pytest.raises(TypeError, match=r".* does not have proper .*"):
         X = matrix.generateSquareMatrix(matSize)
 
-def calculateElements():
+def testCalculateElements():
     matSize = 5
     A = matrix.generateSquareMatrix(matSize)
     B = matrix.generateSquareMatrix(matSize)
