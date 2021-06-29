@@ -7,6 +7,11 @@ Topics covered:
 - [ ] Containing Python program using Docker
 - [ ] Containing Python program using Kubernetes
 
+## Performance Measurement (Time, GFLOPS, and Battery Drop) using Python Programs ##
+- [ ] Performing 3-D CT slice rendering
+- [ ] Performing dense matrix-matrix calculation
+- [ ] Performing simple feed-forward neural network
+
 ## Design Pattern with Python ##
 This repository covers three types of design patterns: creational, structural, and behavioral.
 
