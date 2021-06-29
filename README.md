@@ -1,3 +1,12 @@
+## PySketch - Lists of Sketches using Python Programming Language ##
+
+Topics covered:
+- [x] Designing CI/CD using GitHub Action
+- [x] Writing test cases using PyTests
+- [ ] Scripting with Python files
+- [ ] Containing Python program using Docker
+- [ ] Containing Python program using Kubernetes
+
 ## Design Pattern with Python ##
 This repository covers three types of design patterns: creational, structural, and behavioral.
 
